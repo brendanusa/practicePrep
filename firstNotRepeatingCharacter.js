@@ -11,9 +11,6 @@ function firstNotRepeatingCharacter(s) {
   // first index of storage[1] containing a unique character
   let resultIndex = 0;
 
-  // next index of storage[1] to be filled
-  let currentIndex = 0;
-
   // iterate through s
   for (char of s) {
     // lookup char in obj
@@ -30,15 +27,12 @@ function firstNotRepeatingCharacter(s) {
 
     if (!storage[char]) {
       // store # of instances and index of char in storage[1]
-      storage[char] = [1, currentIndex];
+      storage[char] = [1, storage[1].length];
+      // store char in storage[1]
       storage[1].push(char);
-      // increment next index in storage[1]
-      currentIndex++;
     }
 
   }
-
-  console.log(resultIndex, storage[1].length)
 
   if (resultIndex === storage[1].length) {
     return '_';
@@ -49,10 +43,6 @@ function firstNotRepeatingCharacter(s) {
       return storage[1][i];
     }
   }
-
-  return storage[1][resultIndex];
-
-
 
 }
 
